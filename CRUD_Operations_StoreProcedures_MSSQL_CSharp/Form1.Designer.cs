@@ -45,8 +45,8 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.updateBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.recordsGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -162,6 +162,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.insertBtn.TabIndex = 12;
             this.insertBtn.Text = "Insert";
             this.insertBtn.UseVisualStyleBackColor = false;
+            this.insertBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
             // retrieveBtn
             // 
@@ -207,13 +208,13 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // recordsGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 321);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(593, 129);
-            this.dataGridView1.TabIndex = 17;
+            this.recordsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordsGridView.Location = new System.Drawing.Point(12, 321);
+            this.recordsGridView.Name = "recordsGridView";
+            this.recordsGridView.Size = new System.Drawing.Size(593, 129);
+            this.recordsGridView.TabIndex = 17;
             // 
             // CRUD_Form
             // 
@@ -221,7 +222,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(617, 462);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.recordsGridView);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.updateBtn);
@@ -240,7 +241,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.Controls.Add(this.titleLabel);
             this.Name = "CRUD_Form";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,7 +265,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button searchBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView recordsGridView;
     }
 }
 
