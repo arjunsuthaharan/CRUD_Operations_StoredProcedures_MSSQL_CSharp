@@ -1,7 +1,7 @@
 ﻿
 namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 {
-    partial class genderIDTextBox
+    partial class CRUD_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.genderIDTextBox = new System.Windows.Forms.TextBox();
             this.ageTextBox = new System.Windows.Forms.TextBox();
             this.insertBtn = new System.Windows.Forms.Button();
             this.retrieveBtn = new System.Windows.Forms.Button();
@@ -137,12 +137,13 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.emailTextBox.Size = new System.Drawing.Size(100, 20);
             this.emailTextBox.TabIndex = 9;
             // 
-            // textBox3
+            // genderIDTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(156, 182);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 10;
+            this.genderIDTextBox.Location = new System.Drawing.Point(156, 182);
+            this.genderIDTextBox.Name = "genderIDTextBox";
+            this.genderIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.genderIDTextBox.TabIndex = 10;
+            this.genderIDTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // ageTextBox
             // 
@@ -214,7 +215,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.dataGridView1.Size = new System.Drawing.Size(593, 129);
             this.dataGridView1.TabIndex = 17;
             // 
-            // genderIDTextBox
+            // CRUD_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,7 +228,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.Controls.Add(this.retrieveBtn);
             this.Controls.Add(this.insertBtn);
             this.Controls.Add(this.ageTextBox);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.genderIDTextBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.idTextBox);
@@ -237,7 +238,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.titleLabel);
-            this.Name = "genderIDTextBox";
+            this.Name = "CRUD_Form";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -256,7 +257,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox genderIDTextBox;
         private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Button insertBtn;
         private System.Windows.Forms.Button retrieveBtn;
