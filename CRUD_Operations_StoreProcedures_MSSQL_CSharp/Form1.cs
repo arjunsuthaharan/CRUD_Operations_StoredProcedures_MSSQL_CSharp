@@ -42,7 +42,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
                 con);
             com.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Successfully Saved to Database");
+            MessageBox.Show("Successfully saved to Database");
             LoadAllPersonRecords();
         }
 
@@ -54,6 +54,38 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             dataAdapter.Fill(dataTable);
             recordsGridView.DataSource = dataTable;
 
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand com = new SqlCommand("exec dbo.spUpdatePerson '" +
+                int.Parse(idTextBox.Text) + "','" +
+                nameTextBox.Text + "','" +
+                emailTextBox.Text + "','" +
+                int.Parse(genderIDTextBox.Text) + "','" +
+                int.Parse(ageTextBox.Text) + "'",
+                con);
+            com.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Successfully updated to Database");
+            LoadAllPersonRecords();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            con.Open();
+
+            if (MessageBox.Show("Are you sure you want to delete the entry?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                SqlCommand com = new SqlCommand("exec dbo.spDeletePersonEntry '" +
+                int.Parse(idTextBox.Text) + "'",
+                con);
+                com.ExecuteNonQuery();
+                MessageBox.Show("Successfully deleted entry from Database");
+                LoadAllPersonRecords();
+            }
+            con.Close();
         }
     }
 }

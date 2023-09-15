@@ -185,6 +185,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.updateBtn.TabIndex = 14;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = false;
+            this.updateBtn.Click += new System.EventHandler(this.updateBtn_Click);
             // 
             // deleteBtn
             // 
@@ -196,6 +197,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.deleteBtn.TabIndex = 15;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // searchBtn
             // 
