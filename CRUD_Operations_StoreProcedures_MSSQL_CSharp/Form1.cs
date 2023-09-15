@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 {
-    public partial class Form1 : Form
+    public partial class genderIDTextBox : Form
     {
-        public Form1()
+        public genderIDTextBox()
         {
             InitializeComponent();
+        }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new genderIDTextBox());
         }
     }
 }
