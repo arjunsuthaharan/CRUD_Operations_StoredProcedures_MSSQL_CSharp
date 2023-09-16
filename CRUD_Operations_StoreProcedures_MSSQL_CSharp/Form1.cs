@@ -32,6 +32,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 
         private void insertBtn_Click(object sender, EventArgs e)
         {
+            // for adding new entry to database table
             con.Open();
             SqlCommand com = new SqlCommand("exec dbo.spPersonInsert '" +
                 int.Parse(idTextBox.Text) + "','" +
@@ -48,6 +49,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 
         void LoadAllPersonRecords()
         {
+            // for loading all records from database table to grid view
             SqlCommand com = new SqlCommand("exec dbo.spViewPersonTable", con);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(com);
             DataTable dataTable = new DataTable();
@@ -58,6 +60,8 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
+
+            // for updating existing entry in database table
             con.Open();
             SqlCommand com = new SqlCommand("exec dbo.spUpdatePerson '" +
                 int.Parse(idTextBox.Text) + "','" +
@@ -74,6 +78,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
+            // for deleting entry from database table
             con.Open();
 
             if (MessageBox.Show("Are you sure you want to delete the entry?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -84,6 +89,32 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
                 com.ExecuteNonQuery();
                 MessageBox.Show("Successfully deleted entry from Database");
                 LoadAllPersonRecords();
+            }
+            con.Close();
+        }
+
+        private void searchBtn_Click(object sender, EventArgs e)
+        {
+            // for searching and outputting entry from database table to grid view
+            SqlCommand com = new SqlCommand("exec dbo.spSelectPersonEntry '" + int.Parse(idTextBox.Text) + "'", con);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(com);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            recordsGridView.DataSource = dataTable;
+        }
+
+        private void retrieveBtn_Click(object sender, EventArgs e)
+        {
+            // for searching and retrieving entry from database table into textbox inputs
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT name, email, genderID, age FROM tblPerson WHERE ID = '" + int.Parse(idTextBox.Text) + "'", con);
+            SqlDataReader srd = cmd.ExecuteReader();
+            while (srd.Read())
+            {
+                nameTextBox.Text = srd.GetValue(0).ToString();
+                emailTextBox.Text = srd.GetValue(1).ToString();
+                genderIDTextBox.Text = srd.GetValue(2).ToString();
+                ageTextBox.Text = srd.GetValue(3).ToString();
             }
             con.Close();
         }

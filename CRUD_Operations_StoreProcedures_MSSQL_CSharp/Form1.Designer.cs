@@ -174,6 +174,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.retrieveBtn.TabIndex = 13;
             this.retrieveBtn.Text = "Retrieve";
             this.retrieveBtn.UseVisualStyleBackColor = false;
+            this.retrieveBtn.Click += new System.EventHandler(this.retrieveBtn_Click);
             // 
             // updateBtn
             // 
@@ -209,6 +210,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.searchBtn.TabIndex = 16;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = false;
+            this.searchBtn.Click += new System.EventHandler(this.searchBtn_Click);
             // 
             // recordsGridView
             // 
