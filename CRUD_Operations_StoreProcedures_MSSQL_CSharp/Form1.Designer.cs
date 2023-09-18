@@ -38,7 +38,6 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.genderIDTextBox = new System.Windows.Forms.TextBox();
             this.ageTextBox = new System.Windows.Forms.TextBox();
             this.insertBtn = new System.Windows.Forms.Button();
             this.retrieveBtn = new System.Windows.Forms.Button();
@@ -46,7 +45,12 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.deleteBtn = new System.Windows.Forms.Button();
             this.searchBtn = new System.Windows.Forms.Button();
             this.recordsGridView = new System.Windows.Forms.DataGridView();
+            this.rbMale = new System.Windows.Forms.RadioButton();
+            this.rbFemale = new System.Windows.Forms.RadioButton();
+            this.rbOther = new System.Windows.Forms.RadioButton();
+            this.genderGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.recordsGridView)).BeginInit();
+            this.genderGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -101,9 +105,10 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.genderIDLabel.ForeColor = System.Drawing.Color.White;
             this.genderIDLabel.Location = new System.Drawing.Point(31, 179);
             this.genderIDLabel.Name = "genderIDLabel";
-            this.genderIDLabel.Size = new System.Drawing.Size(100, 22);
+            this.genderIDLabel.Size = new System.Drawing.Size(70, 22);
             this.genderIDLabel.TabIndex = 5;
-            this.genderIDLabel.Text = "Gender ID";
+            this.genderIDLabel.Text = "Gender";
+            this.genderIDLabel.Click += new System.EventHandler(this.genderIDLabel_Click);
             // 
             // ageLabel
             // 
@@ -137,14 +142,6 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.emailTextBox.Size = new System.Drawing.Size(100, 20);
             this.emailTextBox.TabIndex = 9;
             // 
-            // genderIDTextBox
-            // 
-            this.genderIDTextBox.Location = new System.Drawing.Point(156, 182);
-            this.genderIDTextBox.Name = "genderIDTextBox";
-            this.genderIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.genderIDTextBox.TabIndex = 10;
-            this.genderIDTextBox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
             // ageTextBox
             // 
             this.ageTextBox.Location = new System.Drawing.Point(156, 220);
@@ -156,9 +153,9 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             // 
             this.insertBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.insertBtn.ForeColor = System.Drawing.Color.White;
-            this.insertBtn.Location = new System.Drawing.Point(35, 280);
+            this.insertBtn.Location = new System.Drawing.Point(32, 266);
             this.insertBtn.Name = "insertBtn";
-            this.insertBtn.Size = new System.Drawing.Size(75, 23);
+            this.insertBtn.Size = new System.Drawing.Size(98, 37);
             this.insertBtn.TabIndex = 12;
             this.insertBtn.Text = "Insert";
             this.insertBtn.UseVisualStyleBackColor = false;
@@ -180,9 +177,9 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             // 
             this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.updateBtn.ForeColor = System.Drawing.Color.White;
-            this.updateBtn.Location = new System.Drawing.Point(116, 280);
+            this.updateBtn.Location = new System.Drawing.Point(136, 266);
             this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateBtn.Size = new System.Drawing.Size(98, 37);
             this.updateBtn.TabIndex = 14;
             this.updateBtn.Text = "Update";
             this.updateBtn.UseVisualStyleBackColor = false;
@@ -192,9 +189,9 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             // 
             this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.deleteBtn.ForeColor = System.Drawing.Color.White;
-            this.deleteBtn.Location = new System.Drawing.Point(197, 280);
+            this.deleteBtn.Location = new System.Drawing.Point(240, 266);
             this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteBtn.Size = new System.Drawing.Size(98, 37);
             this.deleteBtn.TabIndex = 15;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
@@ -204,9 +201,9 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             // 
             this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.searchBtn.ForeColor = System.Drawing.Color.White;
-            this.searchBtn.Location = new System.Drawing.Point(278, 280);
+            this.searchBtn.Location = new System.Drawing.Point(344, 266);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(75, 23);
+            this.searchBtn.Size = new System.Drawing.Size(98, 37);
             this.searchBtn.TabIndex = 16;
             this.searchBtn.Text = "Search";
             this.searchBtn.UseVisualStyleBackColor = false;
@@ -220,12 +217,65 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.recordsGridView.Size = new System.Drawing.Size(593, 129);
             this.recordsGridView.TabIndex = 17;
             // 
+            // rbMale
+            // 
+            this.rbMale.AutoSize = true;
+            this.rbMale.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMale.ForeColor = System.Drawing.Color.White;
+            this.rbMale.Location = new System.Drawing.Point(6, 19);
+            this.rbMale.Name = "rbMale";
+            this.rbMale.Size = new System.Drawing.Size(62, 23);
+            this.rbMale.TabIndex = 18;
+            this.rbMale.TabStop = true;
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            // 
+            // rbFemale
+            // 
+            this.rbFemale.AutoSize = true;
+            this.rbFemale.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFemale.ForeColor = System.Drawing.Color.White;
+            this.rbFemale.Location = new System.Drawing.Point(74, 19);
+            this.rbFemale.Name = "rbFemale";
+            this.rbFemale.Size = new System.Drawing.Size(81, 23);
+            this.rbFemale.TabIndex = 19;
+            this.rbFemale.TabStop = true;
+            this.rbFemale.Text = "Female";
+            this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
+            // 
+            // rbOther
+            // 
+            this.rbOther.AutoSize = true;
+            this.rbOther.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOther.ForeColor = System.Drawing.Color.White;
+            this.rbOther.Location = new System.Drawing.Point(161, 19);
+            this.rbOther.Name = "rbOther";
+            this.rbOther.Size = new System.Drawing.Size(72, 23);
+            this.rbOther.TabIndex = 20;
+            this.rbOther.TabStop = true;
+            this.rbOther.Text = "Other";
+            this.rbOther.UseVisualStyleBackColor = true;
+            // 
+            // genderGroupBox
+            // 
+            this.genderGroupBox.Controls.Add(this.rbMale);
+            this.genderGroupBox.Controls.Add(this.rbOther);
+            this.genderGroupBox.Controls.Add(this.rbFemale);
+            this.genderGroupBox.Location = new System.Drawing.Point(156, 169);
+            this.genderGroupBox.Name = "genderGroupBox";
+            this.genderGroupBox.Size = new System.Drawing.Size(240, 45);
+            this.genderGroupBox.TabIndex = 21;
+            this.genderGroupBox.TabStop = false;
+            this.genderGroupBox.Text = "groupBox1";
+            // 
             // CRUD_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(617, 462);
+            this.Controls.Add(this.genderGroupBox);
             this.Controls.Add(this.recordsGridView);
             this.Controls.Add(this.searchBtn);
             this.Controls.Add(this.deleteBtn);
@@ -233,7 +283,6 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.Controls.Add(this.retrieveBtn);
             this.Controls.Add(this.insertBtn);
             this.Controls.Add(this.ageTextBox);
-            this.Controls.Add(this.genderIDTextBox);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.idTextBox);
@@ -245,7 +294,10 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             this.Controls.Add(this.titleLabel);
             this.Name = "CRUD_Form";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.CRUD_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.recordsGridView)).EndInit();
+            this.genderGroupBox.ResumeLayout(false);
+            this.genderGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +314,6 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox genderIDTextBox;
         private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Button insertBtn;
         private System.Windows.Forms.Button retrieveBtn;
@@ -270,6 +321,10 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button searchBtn;
         private System.Windows.Forms.DataGridView recordsGridView;
+        private System.Windows.Forms.RadioButton rbMale;
+        private System.Windows.Forms.RadioButton rbFemale;
+        private System.Windows.Forms.RadioButton rbOther;
+        private System.Windows.Forms.GroupBox genderGroupBox;
     }
 }
 

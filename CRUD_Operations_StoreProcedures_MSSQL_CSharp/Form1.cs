@@ -14,7 +14,7 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
     public partial class CRUD_Form : Form
     {
 
-        SqlConnection con = new SqlConnection("****");
+        SqlConnection con = new SqlConnection("*****");
         public CRUD_Form()
         {
             InitializeComponent();
@@ -34,11 +34,25 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
         {
             // for adding new entry to database table
             con.Open();
+            int gender = 0;
+
+            if (rbMale.Checked == true)
+            {
+                gender = 1;
+            }
+            else if (rbFemale.Checked == true)
+            {
+                gender = 2;
+            }
+            else if (rbOther.Checked == true)
+            {
+                gender = 3;
+            }
             SqlCommand com = new SqlCommand("exec dbo.spPersonInsert '" +
                 int.Parse(idTextBox.Text) + "','" +
                 nameTextBox.Text + "','" +
                 emailTextBox.Text + "','" +
-                int.Parse(genderIDTextBox.Text) + "','" +
+                gender + "','" +
                 int.Parse(ageTextBox.Text) + "'",
                 con);
             com.ExecuteNonQuery();
@@ -63,11 +77,25 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
 
             // for updating existing entry in database table
             con.Open();
-            SqlCommand com = new SqlCommand("exec dbo.spUpdatePerson '" +
+            int gender = 0;
+
+            if (rbMale.Checked == true)
+            {
+                gender = 1;
+            }
+            else if (rbFemale.Checked == true)
+            {
+                gender = 2;
+            }
+            else if (rbOther.Checked == true)
+            {
+                gender = 3;
+            }
+            SqlCommand com = new SqlCommand("exec dbo.spPersonInsert '" +
                 int.Parse(idTextBox.Text) + "','" +
                 nameTextBox.Text + "','" +
                 emailTextBox.Text + "','" +
-                int.Parse(genderIDTextBox.Text) + "','" +
+                gender + "','" +
                 int.Parse(ageTextBox.Text) + "'",
                 con);
             com.ExecuteNonQuery();
@@ -113,10 +141,38 @@ namespace CRUD_Operations_StoreProcedures_MSSQL_CSharp
             {
                 nameTextBox.Text = srd.GetValue(0).ToString();
                 emailTextBox.Text = srd.GetValue(1).ToString();
-                genderIDTextBox.Text = srd.GetValue(2).ToString();
+                //genderIDTextBox.Text = srd.GetValue(2).ToString();
                 ageTextBox.Text = srd.GetValue(3).ToString();
+
+                if(int.Parse(srd.GetValue(2).ToString()) == 1)
+                {
+                    rbMale.Checked = true;
+                }
+                else if (int.Parse(srd.GetValue(2).ToString()) == 2)
+                {
+                    rbFemale.Checked = true;
+                }
+                else if (int.Parse(srd.GetValue(2).ToString()) == 3)
+                {
+                    rbOther.Checked = true;
+                }
             }
             con.Close();
+        }
+
+        private void genderIDLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CRUD_Form_Load(object sender, EventArgs e)
+        {
+            LoadAllPersonRecords();
         }
     }
 }
